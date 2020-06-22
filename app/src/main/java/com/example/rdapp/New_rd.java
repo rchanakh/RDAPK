@@ -20,10 +20,11 @@ import java.util.Calendar;
 
 public class New_rd extends AppCompatActivity {
 
-    EditText name, amount, acc_no, mobile_no, date;
+    EditText name, amount, acc_no, mobile_no, date,aaa;
     Button BtnSub;
     DatePickerDialog datePickerDialog;
     DatabaseReference databaseUserInfo;
+    String month1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class New_rd extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         date.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+
                     }
                 },year,month,day);
                 datePickerDialog.show();
@@ -66,6 +68,7 @@ public class New_rd extends AppCompatActivity {
                 String AccNo = acc_no.getText().toString().trim();
                 String MobileNo = mobile_no.getText().toString().trim();
                 String Date = date.getText().toString().trim();
+
 
                 if (TextUtils.isEmpty(Name)) {
                     Toast.makeText(New_rd.this, "Please enter Name", Toast.LENGTH_SHORT).show();
