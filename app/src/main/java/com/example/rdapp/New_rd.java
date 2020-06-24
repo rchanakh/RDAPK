@@ -24,7 +24,8 @@ public class New_rd extends AppCompatActivity {
     Button BtnSub;
     DatePickerDialog datePickerDialog;
     DatabaseReference databaseUserInfo;
-    String month1;
+    DatabaseReference databasemonthentry;
+    int month1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class New_rd extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         date.setText(dayOfMonth+"/"+(month+1)+"/"+year);
-
+                        month1 = month+1;
                     }
                 },year,month,day);
                 datePickerDialog.show();
@@ -52,6 +53,7 @@ public class New_rd extends AppCompatActivity {
         });
 
         databaseUserInfo = FirebaseDatabase.getInstance().getReference("user_info");
+        databasemonthentry = FirebaseDatabase.getInstance().getReference("month_entry");
 
         name = (EditText) findViewById(R.id.txt_Name);
         amount = (EditText) findViewById(R.id.amount);
@@ -103,9 +105,24 @@ public class New_rd extends AppCompatActivity {
                 if(!TextUtils.isEmpty(Name)){
                     String id = databaseUserInfo.push().getKey();
 
-                    UserInfoDB userInfoDB = new UserInfoDB(Name, Amount, AccNo, MobileNo,Date);
+                    UserInfoDB userInfoDB = new UserInfoDB(Name, Amount, AccNo, MobileNo,Date, month1);
 
                     databaseUserInfo.child(id).setValue(userInfoDB);
+
+                    for(int month2=month1; month2>0; month2--)
+                    {
+                        String id1 = databasemonthentry.push().getKey();
+                        MonthEntry monthentry = new MonthEntry( Name, AccNo, Amount, Date,month2);
+                        databasemonthentry.child(id1).setValue(monthentry);
+                    }
+
+                    for(int month2=month1+1; month2<=12; month2++)
+                    {
+                        String id2 = databasemonthentry.push().getKey();
+                        MonthEntry monthentry = new MonthEntry( Name, AccNo, Amount, Date,month2);
+                        databasemonthentry.child(id2).setValue(monthentry);
+                    }
+
                     Toast.makeText(New_rd.this, "Successful !", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }
