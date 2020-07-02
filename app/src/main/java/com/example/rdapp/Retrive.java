@@ -4,6 +4,7 @@ public class Retrive {
 
     private String Name, Amount, AccNo, Mobile, Date;
 
+
     public Retrive() {
     }
 
@@ -13,7 +14,10 @@ public class Retrive {
         AccNo = accNo;
         Mobile = mobile;
         Date = date;
+
     }
+
+
 
     public String getName() {
         return Name;

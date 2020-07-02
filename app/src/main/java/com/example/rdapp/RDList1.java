@@ -4,29 +4,26 @@ package com.example.rdapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class RDList1 extends AppCompatActivity {
 
-    ListView RDlistview;
+    /*ListView RDlistview;
     FirebaseDatabase database;
     DatabaseReference ref;
 
     ArrayList<String> list;
     ArrayAdapter <String> adapter;
-    Retrive retrive;
+    Retrive retrive;*/
+
+    private RecyclerView recyclerView;
+    private ListPostAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +31,21 @@ public class RDList1 extends AppCompatActivity {
         setContentView(R.layout.activity_rdlist1);
         getSupportActionBar().setTitle("RD List");
 
+        recyclerView = findViewById(R.id.recycler1);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        FirebaseRecyclerOptions<Retrive> options =
+                new FirebaseRecyclerOptions.Builder<Retrive>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("user_info"), Retrive.class)
+                        .build();
+
+        adapter = new ListPostAdapter(options,this);
+        recyclerView.setAdapter(adapter);
+
+
+
+
+        /*
         retrive = new Retrive();
 
         RDlistview =(ListView) findViewById(R.id.listviewrduser);
@@ -60,31 +72,8 @@ public class RDList1 extends AppCompatActivity {
             }
         });
 
+    */
 
-
-    }
-
-    public void btn_Home(View view) {
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-    }
-}
-/* ListView listviewrduser1;
-    DatabaseReference databaseUserInfo;
-
-    List<UserInfoDB> userInfoDBRDList;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rdlist1);
-        getSupportActionBar().setTitle("RD List");
-
-        databaseUserInfo = FirebaseDatabase.getInstance().getReference("user_info");
-
-        listviewrduser1 =(ListView) findViewById(R.id.listviewrduser);
-
-        userInfoDBRDList = new ArrayList<>();
 
 
     }
@@ -92,25 +81,17 @@ public class RDList1 extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        databaseUserInfo.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+        adapter.startListening();
+    }
 
-                userInfoDBRDList.clear();
-                for(DataSnapshot rdusersnapshot : dataSnapshot.getChildren()){
-                    UserInfoDB userInfoDB = rdusersnapshot.getValue(UserInfoDB.class);
-                    userInfoDBRDList.add(userInfoDB);
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
 
-                }
 
-                RdUserList adapter = new RdUserList(RDList1.this, userInfoDBRDList);
-                listviewrduser1.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
+    public void btn_Home(View view) {
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    }
+}

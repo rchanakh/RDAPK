@@ -1,10 +1,10 @@
 package com.example.rdapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void btn_List(View view) {
         startActivity(new Intent(getApplicationContext(), RDList1.class));
-        Intent intent = new Intent(MainActivity.this, RDList1.class);
-        startActivity(intent);
+        //Intent intent = new Intent(MainActivity.this, RDList1.class);
+        //startActivity(intent);
     }
 
     public void btn_Delete(View view) {
