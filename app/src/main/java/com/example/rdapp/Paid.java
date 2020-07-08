@@ -2,21 +2,27 @@ package com.example.rdapp;
 
 public class Paid {
 
-    private String Name, Amount, AccNo, Date;
+    private String Name, Amount, AccNo, Date, Month3;
     //private int Month1;
 
     public Paid() {
     }
 
-    public Paid(String name, String amount, String accNo, String date) {
+    public Paid(String name, String amount, String accNo, String date,String month3) {
         Name = name;
         Amount = amount;
         AccNo = accNo;
         Date = date;
-        //Month1 = month1;
+        Month3 = month3;
     }
 
+    public String getMonth3() {
+        return Month3;
+    }
 
+    public void setMonth3(String month3) {
+        Month3 = month3;
+    }
 
     public String getName() {
         return Name;

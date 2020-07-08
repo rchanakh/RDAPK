@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btn_remind(View view) {
-        startActivity(new Intent(getApplicationContext(), Reminder.class));
+        startActivity(new Intent(getApplicationContext(), MonthPage.class));
     }
 
     public void btn_List(View view) {

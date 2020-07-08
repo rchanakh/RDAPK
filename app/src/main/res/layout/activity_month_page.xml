@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MonthPage"
+    android:background="@drawable/background">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/jan"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/january"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_jan"/>
+
+            <ImageView
+                android:id="@+id/mar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/march"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_mar"/>
+
+            <ImageView
+                android:id="@+id/may"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/may"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_may"/>
+
+            <ImageView
+                android:id="@+id/jul"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/july"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_jul"/>
+
+            <ImageView
+                android:id="@+id/sep"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/september"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_sep"/>
+
+            <ImageView
+                android:id="@+id/nov"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/november"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_nov"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+
+
+            <ImageView
+                android:id="@+id/feb"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/february"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_feb"/>
+
+            <ImageView
+                android:id="@+id/apr"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/april"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_apr"/>
+
+            <ImageView
+                android:id="@+id/jun"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/june"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_jun"/>
+
+            <ImageView
+                android:id="@+id/aug"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/august"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_aug"/>
+
+            <ImageView
+                android:id="@+id/oct"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/october"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_oct"/>
+
+            <ImageView
+                android:id="@+id/dec"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/december"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:onClick="btn_dec"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

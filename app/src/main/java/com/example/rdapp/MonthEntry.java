@@ -2,19 +2,14 @@ package com.example.rdapp;
 
 class MonthEntry {
 
-    public String Name, Amount, AccNo, Date;
-    public int Month1;
+    public String Name, Amount, AccNo, Date, Month3;
 
-    public MonthEntry() {
-    }
 
-    public MonthEntry(String name, String amount, String accNo, String date, int month1) {
+    public MonthEntry(String name, String amount, String accNo, String date, String month3) {
         Name = name;
         Amount = amount;
         AccNo = accNo;
         Date = date;
-        Month1 = month1;
+        Month3 = month3;
     }
-
-
 }

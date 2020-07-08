@@ -20,6 +20,10 @@ public class ReminderPostAdapter extends FirebaseRecyclerAdapter<Paid, ReminderP
 
     private Context context;
 
+    public String AccNo, Date, Month3, Amount;
+
+    //DatabaseReference databasemonthpaid = FirebaseDatabase.getInstance().getReference("month_paid");
+
     public ReminderPostAdapter(@NonNull FirebaseRecyclerOptions<Paid> options, Context context) {
         super(options);
         this.context = context;
@@ -33,8 +37,14 @@ public class ReminderPostAdapter extends FirebaseRecyclerAdapter<Paid, ReminderP
         holder.name.setText(post.getName());
         holder.amount.setText(post.getAmount());
         holder.acc_no.setText(post.getAccNo());
-        //holder.month.setText(post.getMonth1());
+        holder.month.setText(post.getMonth3());
         holder.date.setText(post.getDate());
+
+        AccNo = post.getAccNo();
+        Date = post.getDate();
+        Month3 = post.getMonth3();
+        Amount = post.getAmount();
+
 
 
         holder.paid.setOnClickListener(new View.OnClickListener() {
@@ -48,9 +58,21 @@ public class ReminderPostAdapter extends FirebaseRecyclerAdapter<Paid, ReminderP
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
+
                             }
+
                         });
 
+                MonthPaid monthPaid = new MonthPaid(AccNo, Date, Month3, Amount);
+                FirebaseDatabase.getInstance().getReference("month_paid")
+                        .child(getRef(i).getKey())
+                        .setValue(monthPaid)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                    }
+                });
 
             }
         });
@@ -79,7 +101,7 @@ public class ReminderPostAdapter extends FirebaseRecyclerAdapter<Paid, ReminderP
             name = itemView.findViewById(R.id.name2);
             amount = itemView.findViewById(R.id.amount2);
             acc_no = itemView.findViewById(R.id.acc_no2);
-            //month = itemView.findViewById(R.id.month2);
+            month = itemView.findViewById(R.id.month2);
             date = itemView.findViewById(R.id.date2);
             paid = itemView.findViewById(R.id.paid);
 

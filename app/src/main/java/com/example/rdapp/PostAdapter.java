@@ -62,6 +62,19 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Retrive, PostAdapter.Pa
                                 }
                             });
                 }
+
+                for(int j=0; j<13; j++) {
+                    FirebaseDatabase.getInstance().getReference()
+                            .child("month_paid")
+                            .child(getRef(i).getKey()+"_"+j)
+                            .removeValue()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                }
+                            });
+                }
             }
         });
 

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Reminder extends AppCompatActivity {
+public class Reminder12 extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ReminderPostAdapter adapter;
@@ -50,7 +50,7 @@ public class Reminder extends AppCompatActivity {
         String abc= xyz;
         FirebaseRecyclerOptions<Paid> options =
                 new FirebaseRecyclerOptions.Builder<Paid>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference("month_entry").orderByChild("Month3").equalTo("1"), Paid.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference("month_entry").orderByChild("Month3").equalTo("12"), Paid.class)
                         .build();
 
         adapter = new ReminderPostAdapter(options,this);
